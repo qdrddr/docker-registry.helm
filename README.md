@@ -1,6 +1,9 @@
 # Docker Registry Helm Chart
 
-This directory contains a Kubernetes chart to deploy a private Docker Registry.
+This directory contains a Kubernetes chart to deploy a private Docker Registry. 
+
+# Proxy with Redis
+Can be found in a (branch) [/proxy-redis]
 
 ## Prerequisites Details
 
@@ -86,7 +89,7 @@ their default values.
 | `s3.secure`                 | Use HTTPS                                                                                  | `nil`           |
 | `swift.authurl`             | Swift authurl                                                                              | `nil`           |
 | `swift.container`           | Swift container                                                                            | `nil`           |
-| `proxy.enabled`             | If true, registry will function as a proxy/mirror                                          | `true`         |
+| `proxy.enabled`             | If true, registry will function as a proxy/mirror                                          | `false`         |
 | `proxy.remoteurl`           | Remote registry URL to proxy requests to                                                   | `https://registry-1.docker.io`            |
 | `proxy.username`            | Remote registry login username                                                             | `nil`           |
 | `proxy.password`            | Remote registry login password                                                             | `nil`           |

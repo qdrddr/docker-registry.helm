@@ -29,7 +29,9 @@ service:
   # sessionAffinity: None
   # sessionAffinityConfig: {}
   # clusterIP:
+  # clusterIPRedis:
   port: 5000
+  portRedis: 6379
   # nodePort:
   # loadBalancerIP:
   # loadBalancerSourceRanges:

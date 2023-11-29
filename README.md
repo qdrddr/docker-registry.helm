@@ -38,7 +38,7 @@ their default values.
 | `image.tag`                 | Container image tag to deploy                                                              | `2.8.3`         |
 | `imagePullSecrets`          | Specify image pull secrets                                                                 | `nil` (does not add image pull secrets to deployed pods) |
 | `persistence.accessMode`    | Access mode to use for PVC                                                                 | `ReadWriteOnce` |
-| `persistence.enabled`       | Whether to use a PVC for the Docker storage                                                | `true`         |
+| `persistence.enabled`       | Whether to use a PVC for the Docker storage                                                | `true`          |
 | `persistence.deleteEnabled` | Enable the deletion of image blobs and manifests by digest                                 | `nil`           |
 | `persistence.size`          | Amount of space to claim for PVC                                                           | `10Gi`          |
 | `persistence.storageClass`  | Storage Class to use for PVC                                                               | `-`             |
@@ -86,7 +86,8 @@ their default values.
 | `s3.secure`                 | Use HTTPS                                                                                  | `nil`           |
 | `swift.authurl`             | Swift authurl                                                                              | `nil`           |
 | `swift.container`           | Swift container                                                                            | `nil`           |
-| `proxy.enabled`             | If true, registry will function as a proxy/mirror                                          | `true`         |
+| `proxy.enabled`             | If true, registry will function as a proxy/mirror                                          | `true`          |
+| `redis.enabled`             | If true, registry will use redis a cache                                                   | `true`          |
 | `proxy.remoteurl`           | Remote registry URL to proxy requests to                                                   | `https://registry-1.docker.io`            |
 | `proxy.username`            | Remote registry login username                                                             | `nil`           |
 | `proxy.password`            | Remote registry login password                                                             | `nil`           |
@@ -116,8 +117,8 @@ their default values.
 | `extraEnvVars`              | Additional environment variables to the pod                                                | `[]`            |
 | `initContainers`            | Init containers to be created in the pod                                                   | `[]`            |
 | `garbageCollect.enabled`    | If true, will deploy garbage-collector cronjob                                             | `false`         |
-| `garbageCollect.deleteUntagged` | If true, garbage-collector will delete manifests that are not currently referenced via tag | `true` |    |
-| `garbageCollect.schedule`   | CronTab schedule, please use standard crontab format                                        | `0 1 * * *` |  |
+| `garbageCollect.deleteUntagged` | If true, garbage-collector will delete manifests that are not currently referenced via tag | `true`      |
+| `garbageCollect.schedule`   | CronTab schedule, please use standard crontab format                                       | `0 1 * * *`     |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to
 `helm install`.

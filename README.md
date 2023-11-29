@@ -25,8 +25,10 @@ $ helm repo add twuni-proxy-redis https://raw.githubusercontent.com/qdrddr/docke
 
 To install the chart, use the following:
 
-```console
+```
+console
 $ helm install twuni-proxy-redis/docker-registry
+```
 
 ## Configuration
 

@@ -115,7 +115,9 @@ proxy:
   # the ref for a secret stored outside of this chart
   # Keys: proxyUsername, proxyPassword
   secretRef: ""
-
+redis:
+  enabled: false
+  
 metrics:
   enabled: false
   port: 5001

@@ -19,7 +19,7 @@ serviceAccount:
 
 image:
   repository: registry
-  tag: 2.8.1
+  tag: 2.8.3
   pullPolicy: IfNotPresent
 # imagePullSecrets:
     # - name: docker
@@ -64,8 +64,8 @@ resources: {}
   #  memory: 128Mi
 persistence:
   accessMode: 'ReadWriteOnce'
-  enabled: false
-  size: 10Gi
+  enabled: true
+  size: 50Gi
   # storageClass: '-'
 
 # set the type of filesystem to use: filesystem, s3
@@ -108,7 +108,7 @@ secrets:
 
 # https://docs.docker.com/registry/recipes/mirror/
 proxy:
-  enabled: false
+  enabled: true
   remoteurl: https://registry-1.docker.io
   username: ""
   password: ""

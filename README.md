@@ -86,8 +86,8 @@ their default values.
 | `s3.secure`                 | Use HTTPS                                                                                  | `nil`           |
 | `swift.authurl`             | Swift authurl                                                                              | `nil`           |
 | `swift.container`           | Swift container                                                                            | `nil`           |
-| `proxy.enabled`             | If true, registry will function as a proxy/mirror                                          | `true`          |
 | `redis.enabled`             | If true, registry will use redis a cache                                                   | `true`          |
+| `proxy.enabled`             | If true, registry will function as a proxy/mirror                                          | `true`          |
 | `proxy.remoteurl`           | Remote registry URL to proxy requests to                                                   | `https://registry-1.docker.io`            |
 | `proxy.username`            | Remote registry login username                                                             | `nil`           |
 | `proxy.password`            | Remote registry login password                                                             | `nil`           |

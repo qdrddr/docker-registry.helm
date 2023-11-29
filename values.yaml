@@ -106,7 +106,7 @@ secrets:
 #  authurl: http://swift.example.com/
 #  container: my-container
 
-# https://docs.docker.com/registry/recipes/mirror/
+# https://distribution.github.io/distribution/recipes/mirror/
 proxy:
   enabled: true
   remoteurl: https://registry-1.docker.io
@@ -115,8 +115,15 @@ proxy:
   # the ref for a secret stored outside of this chart
   # Keys: proxyUsername, proxyPassword
   secretRef: ""
+  name: docker-io
+
+# https://distribution.github.io/distribution/about/deploying/
 redis:
   enabled: false
+  image:
+    repository: docker.io/redis
+    tag: 6.2.14-alpine
+    pullPolicy: IfNotPresent
   
 metrics:
   enabled: false
@@ -158,6 +165,15 @@ securityContext:
   enabled: true
   runAsUser: 1000
   fsGroup: 1000
+
+securityContextRedis:
+  enabled: true
+  runAsUser: 999
+  fsGroup: 999
+  runAsNonRoot: true
+  seccompProfile:
+    type: RuntimeDefault
+
 
 priorityClassName: ""
 

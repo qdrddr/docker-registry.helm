@@ -23,12 +23,33 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- end -}}
 {{- end -}}
 
+{{/* 
+  !!! Verify if this is working as expected !!!
+  If .Values.proxy.enabled is set to true, add to the fullname dash symbol following with the value .Values.proxy.name
+*/}}
+{{- define "docker-registry.fullname" -}}
+{{- if and .Values.proxy.enabled (eq .Values.proxy.enabled true) -}}
+{{- if .Values.proxy.name -}}
+{{- printf "%s-%s" .docker-registry.fullname .Values.proxy.name | trunc 63 | trimSuffix "-" -}}
+{{- else -}}
+{{- printf "%s-%s" .docker-registry.fullname "proxy" | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+
 {{- define "docker-registry.envs" -}}
 - name: REGISTRY_HTTP_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ template "docker-registry.fullname" . }}-secret
       key: haSharedSecret
+
+{{- if .Values.redis.enabled }}
+- name: REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR
+  value: {{ template "docker-registry.fullname" . }}-redis
+- name: REGISTRY_REDIS_ADDR
+  value: "registry-cache-redis:6379"
+{{- end }}
 
 {{- if .Values.secrets.htpasswd }}
 - name: REGISTRY_AUTH

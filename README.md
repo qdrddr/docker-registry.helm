@@ -3,7 +3,7 @@
 This directory contains a Kubernetes chart to deploy a private Docker Registry. 
 
 # Proxy with Redis
-Can be found in a [branch] (/tree/proxy-redis)
+Can be found in a [branch] (tree/proxy-redis)
 
 ## Prerequisites Details
 
